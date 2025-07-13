@@ -1,0 +1,78 @@
+# Semantic Diff 配置文件
+
+# 模型配置
+model:
+  # 模型类型: transformers, ollama, vllm
+  type: "ollama"
+  
+  # 模型名称
+  name: "qwen3:4b"  # ollama中的Qwen3-4B模型名称
+  
+  # API配置 (仅对 ollama 和 vllm 有效)
+  api:
+    base_url: "http://localhost:11434"  # ollama默认端口
+    timeout: 30
+    
+  # 生成参数
+  generation:
+    max_length: 2048
+    temperature: 0.1
+    top_p: 0.9
+    
+  # 兼容性设置
+  device: "auto"  # 为了向后兼容
+  
+# 语义分析配置
+semantic_analysis:
+  # 分析深度级别
+  depth: "medium"  # shallow, medium, deep
+  
+  # 要分析的代码特征
+  features:
+    - "function_signatures"
+    - "variable_names"
+    - "control_flow"
+    - "data_structures"
+    - "comments"
+    - "imports"
+    
+  # 忽略的差异类型
+  ignore_differences:
+    - "whitespace"
+    - "comments_only"
+    - "variable_rename"
+    - "code_formatting"
+
+# 支持的编程语言
+supported_languages:
+  - "python"
+  - "javascript"
+  - "java"
+  - "cpp"
+  - "c"
+  - "rust"
+  - "go"
+  - "typescript"
+
+# 输出配置
+output:
+  format: "rich"  # plain, rich, json, html
+  show_line_numbers: true
+  show_context: true
+  context_lines: 3
+  highlight_syntax: true
+  color_scheme: "monokai"
+
+# 性能配置
+performance:
+  max_file_size: 1048576  # 1MB
+  parallel_processing: true
+  max_workers: 4
+  cache_enabled: true
+  cache_dir: ".semantic_diff_cache"
+
+# 日志配置
+logging:
+  level: "WARNING"  # DEBUG, INFO, WARNING, ERROR
+  file: "semantic_diff.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s" 
