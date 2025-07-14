@@ -1,0 +1,177 @@
+# Semantic Diff Benchmark Configuration
+
+# 测试套件配置
+test_suites:
+  - name: "basic_changes"
+    description: "基本代码变更测试"
+    languages: ["python", "javascript", "java", "cpp", "go", "rust"]
+    complexity: "simple"
+    categories:
+      - "function_addition"
+      - "function_removal"
+      - "function_modification"
+      - "variable_changes"
+      - "import_changes"
+  
+  - name: "refactoring"
+    description: "代码重构测试"
+    languages: ["python", "javascript", "java"]
+    complexity: "medium"
+    categories:
+      - "method_rename"
+      - "class_extraction"
+      - "method_extraction"
+      - "parameter_changes"
+      - "design_pattern_application"
+  
+  - name: "feature_development"
+    description: "功能开发测试"
+    languages: ["python", "javascript", "java"]
+    complexity: "complex"
+    categories:
+      - "new_class_addition"
+      - "api_enhancement"
+      - "algorithm_optimization"
+      - "error_handling_improvement"
+      - "performance_optimization"
+  
+  - name: "bug_fixes"
+    description: "Bug修复测试"
+    languages: ["python", "javascript", "java", "cpp"]
+    complexity: "various"
+    categories:
+      - "logic_error_fix"
+      - "null_pointer_fix"
+      - "boundary_condition_fix"
+      - "memory_leak_fix"
+      - "race_condition_fix"
+  
+  - name: "architectural_changes"
+    description: "架构变更测试"
+    languages: ["python", "javascript", "java"]
+    complexity: "high"
+    categories:
+      - "mvc_to_mvp"
+      - "monolith_to_microservice"
+      - "synchronous_to_asynchronous"
+      - "database_schema_change"
+      - "framework_migration"
+
+# 性能测试配置
+performance_tests:
+  file_sizes:
+    - name: "small"
+      max_lines: 100
+      description: "小文件测试"
+    - name: "medium"
+      max_lines: 500
+      description: "中等文件测试"
+    - name: "large"
+      max_lines: 2000
+      description: "大文件测试"
+    - name: "xlarge"
+      max_lines: 5000
+      description: "超大文件测试"
+  
+  complexity_levels:
+    - name: "simple"
+      functions_per_file: 5
+      classes_per_file: 1
+      depth: 2
+    - name: "medium"
+      functions_per_file: 15
+      classes_per_file: 3
+      depth: 4
+    - name: "complex"
+      functions_per_file: 30
+      classes_per_file: 6
+      depth: 6
+    - name: "high"
+      functions_per_file: 50
+      classes_per_file: 10
+      depth: 8
+
+# 评估指标
+metrics:
+  accuracy:
+    - semantic_similarity_precision
+    - functional_change_detection_rate
+    - false_positive_rate
+    - false_negative_rate
+  
+  performance:
+    - execution_time
+    - memory_usage
+    - cpu_utilization
+    - cache_hit_rate
+  
+  quality:
+    - diff_completeness
+    - explanation_clarity
+    - recommendation_relevance
+    - confidence_accuracy
+
+# 基准数据集配置
+datasets:
+  - name: "synthetic"
+    description: "人工生成的测试用例"
+    size: 200
+    generated: true
+  
+  - name: "real_world"
+    description: "真实项目的代码变更"
+    size: 50
+    projects:
+      - "flask"
+      - "express"
+      - "spring-boot"
+      - "react"
+      - "numpy"
+  
+  - name: "edge_cases"
+    description: "边界情况和特殊场景"
+    size: 30
+    categories:
+      - "empty_files"
+      - "single_line_changes"
+      - "massive_rewrites"
+      - "unicode_content"
+      - "deeply_nested_structures"
+
+# 运行配置
+execution:
+  parallel: true
+  max_workers: 4
+  timeout_per_test: 120  # seconds
+  retry_count: 3
+  cache_results: true
+  
+  comparison_modes:
+    - "structural_only"
+    - "semantic_only" 
+    - "hybrid"
+  
+  model_configurations:
+    - name: "default"
+      temperature: 0.1
+      max_length: 2048
+    - name: "creative"
+      temperature: 0.7
+      max_length: 4096
+    - name: "precise"
+      temperature: 0.05
+      max_length: 1024
+
+# 报告配置
+reporting:
+  formats: ["html", "json", "csv", "markdown"]
+  include_plots: true
+  include_examples: true
+  include_failure_analysis: true
+  
+  charts:
+    - accuracy_by_language
+    - performance_by_file_size
+    - complexity_vs_accuracy
+    - semantic_vs_structural_comparison
+    - error_rate_analysis 
